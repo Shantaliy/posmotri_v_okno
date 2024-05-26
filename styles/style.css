@@ -61,7 +61,11 @@ input[placeholder]:active {
 }
 
 .button:active,
-.content__video-card:active {
+.content__card-link:active {
+    background-color: #545050;
+}
+
+.content__card-link_current  {
     background-color: #545050;
 }
 
@@ -69,31 +73,28 @@ input[placeholder]:hover {
     cursor: text;
 }
 
-.search-form__label-text:hover,
+.search-form__label:hover,
 .button:hover,
 .content__card-link:hover {
     text-decoration: underline;
 }
 
-.search-form__submit-button:focus-visible {
+.button:focus-visible {
     outline: 1px solid #fff;
     outline-offset: 1px;
 }
 
-.more-button:focus-visible {
-    width: calc(100% - 6px);
-    margin-left: 3px;
-    margin-bottom: 3px;
-    outline: 1px solid #fff;
-    outline-offset: 1px;
-}
-
-.content__card-link:focus {
+.button:focus, 
+.content__card-link:focus, 
+.search-form__textfield:focus {
     outline: none;
 }
-  
-.content__card-link:focus-visible .content__video-card {
-    border: 1px solid #fff;
+
+.content__card-link:focus-visible {
+    display: block;
+    outline: 1px solid #fff;
+    width: calc(100% - 6px);
+    margin: 3px 3px 0;
 }
 
 /* бокс контента */
@@ -109,7 +110,8 @@ input[placeholder]:hover {
 
 /* бокс для видео и форм */
 .result {
-    padding-top: 74px;
+    /*padding-top: 74px;*/
+    align-self: end;
 }
 
 /* видео */
@@ -118,13 +120,14 @@ input[placeholder]:hover {
 }
 
 .result__video {
+    object-fit: fill;
     width: 711px;
     height: 386px;
 }
 
 /* формы */
 .search-form {
-    margin-top: 11px;
+    margin-top: 15px;
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: auto;
@@ -133,10 +136,7 @@ input[placeholder]:hover {
 }
 
 .search-form__fieldset { /* формы __ форма */
-    width: 225px;
-    height: 54px;
     border: none;
-    margin: 3px 0 0 0;
 }
 
 .search-form__fieldset-title { /* формы __ форма __ слово город */
@@ -144,23 +144,22 @@ input[placeholder]:hover {
 }
 
 .search-form__textfield { /* формы __ форма __ город */
-    width: 225px;
-    outline: none;
+    min-width: 225px;
     background: none;
     border: none;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
 }
 
-.search-form__fieldset + .search-form__fieldset { /* формы __ отступ между формами */
-    margin-left: 12px;
+.search-form__textfield:focus {
+    outline: none;
 }
 
 .search-form__checkbox-list { /* формы __ форма __ время суток */
-    margin-top: 5px;
-    width: 225px;
+    margin-bottom: 5px;
+    min-width: 212px;
     display: flex;
-    gap: 19px;
+    gap: 15px;
 }
 
 .search-form__label {
@@ -171,8 +170,8 @@ input[placeholder]:hover {
 }
 
 .search-form__pseudo-checkbox { /* формы __ форма __ время суток __ иконка */
-    width: 16px;
-    height: 16px;
+    width: 19px;
+    height: 19px;
     outline: 1px solid #fff;
     display: flex;
     justify-content: center;
@@ -189,13 +188,13 @@ input[placeholder]:hover {
 
 .search-form__submit-button { /* формы __ кнопка */
     width: 194px;
-    height: 34px;
 }
 
 /* темплейты карточек */
 .content__list {
     position: relative;
     margin-top: 22px;
+    padding-right: 7px;
     height: 298px;
     overflow-y: scroll;
 }
@@ -206,7 +205,6 @@ input[placeholder]:hover {
 
 .more-button { /* темплейты карточек __ кнопка */
     width: 399px;
-    height: 34px;
 }
 
 .content__video-card { /* бокс карточка */
@@ -221,6 +219,7 @@ input[placeholder]:hover {
 }
 
 .content__video-card-thumbnail { /* бокс карточка __ картинка */
+    object-fit: fill;
     width: 194px;
     height: 103px;
 }
@@ -229,14 +228,7 @@ input[placeholder]:hover {
 .search-form__fieldset-title,
 .search-form__textfield[placeholder],
 .search-form__label-text {
-    font-family: 'Fira Sans Condensed';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.6px;
-}
-
-input[type="text"] {
-    font-family: 'Fira Sans Condensed';
+    font-family: 'Fira Sans Condensed', Arial, sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 21.6px;
@@ -244,18 +236,19 @@ input[type="text"] {
 }
 
 .button {
-    font-family: 'Fira Sans Condensed';
+    font-family: 'Fira Sans Condensed', Arial, sans-serif;
     font-size: 18px;
     font-weight: 700;
     line-height: 21.6px;
     color: #fff;
+    height: 34px;
     background: none;
     border: 1px solid #fff;
     cursor: pointer;
 }
 
 .title {
-    font-family: 'Oswald';
+    font-family: 'Oswald', Arial, sans-serif;
     font-size: 75px;
     font-weight: 700;
     line-height: 70.5px;
@@ -267,12 +260,17 @@ input[type="text"] {
 }
 
 .content__card-link {
+    display: block;
     text-decoration: none;
     color: #fff;
 }
 
 .content__video-card-title {
-    font-family: 'Oswald';
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 200px;
+    font-family: 'Oswald', Arial, sans-serif;
     font-size: 30px;
     font-weight: 700;
     line-height: 30px;
@@ -280,7 +278,7 @@ input[type="text"] {
 }
 
 .content__video-card-description {
-    font-family: 'Fira Sans Condensed';
+    font-family: 'Fira Sans Condensed', Arial, sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 16.2px;
