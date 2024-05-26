@@ -50,6 +50,12 @@ ol {
     white-space: nowrap;
 }
 
+.button:focus, 
+.content__card-link:focus, 
+.search-form__textfield:focus {
+    outline: none;
+}
+
 .search-form__label:has(:focus-visible) {
     outline: 1px solid #fff;
     outline-offset: 1px;
@@ -73,7 +79,7 @@ input[placeholder]:hover {
     cursor: text;
 }
 
-.search-form__label:hover,
+.search-form__label:hover .search-form__label-text,
 .button:hover,
 .content__card-link:hover {
     text-decoration: underline;
@@ -84,10 +90,13 @@ input[placeholder]:hover {
     outline-offset: 1px;
 }
 
-.button:focus, 
-.content__card-link:focus, 
-.search-form__textfield:focus {
-    outline: none;
+.more-button {
+    width: 100%;
+}
+
+.more-button:focus-visible {
+    width: calc(100% - 6px);
+    margin: 0 0 3px 3px;
 }
 
 .content__card-link:focus-visible {
@@ -110,7 +119,6 @@ input[placeholder]:hover {
 
 /* бокс для видео и форм */
 .result {
-    /*padding-top: 74px;*/
     align-self: end;
 }
 
@@ -151,10 +159,6 @@ input[placeholder]:hover {
     border-bottom: 1px solid #fff;
 }
 
-.search-form__textfield:focus {
-    outline: none;
-}
-
 .search-form__checkbox-list { /* формы __ форма __ время суток */
     margin-bottom: 5px;
     min-width: 212px;
@@ -193,7 +197,7 @@ input[placeholder]:hover {
 /* темплейты карточек */
 .content__list {
     position: relative;
-    margin-top: 22px;
+    margin-top: 25px;
     padding-right: 7px;
     height: 298px;
     overflow-y: scroll;
@@ -201,10 +205,6 @@ input[placeholder]:hover {
 
 .content__list li + li { /* отступ между карточек */
     margin-top: 30px;
-}
-
-.more-button { /* темплейты карточек __ кнопка */
-    width: 399px;
 }
 
 .content__video-card { /* бокс карточка */
@@ -269,7 +269,7 @@ input[placeholder]:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 200px;
+    max-width: 200px;
     font-family: 'Oswald', Arial, sans-serif;
     font-size: 30px;
     font-weight: 700;
