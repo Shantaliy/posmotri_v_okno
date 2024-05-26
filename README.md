@@ -1,1 +1,1 @@
-https://github.com/Shantaliy/posmotri_v_okno/tree/Shantaliy-patch-1
+https://github.com/Shantaliy/posmotri_v_okno/tree/Shantaliy-patch-2
